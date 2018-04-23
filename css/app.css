@@ -7,6 +7,7 @@
 #resultWell li {
    list-style-type: none;
    text-transform: capitalize;
+   margin: 10px 0;
 }
 
 .alertBorder {
