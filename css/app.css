@@ -8,3 +8,7 @@
    list-style-type: none;
    text-transform: capitalize;
 }
+
+.alertBorder {
+   border: 1px solid #dd3333;
+}

@@ -35,12 +35,13 @@ $(document).ready(function(){
         // If Form is empty
         if (desiredOutcome = $('#desiredOutcome').val() == '') {
          // Add Red Border
-         $('.form-control').css('border', '1px solid red');
+         $('.form-control').addClass('alertBorder');
             alert('You must enter a word');
             // Keep results hidden
             $('#resultWell').hide();
             return;
         } else {
+         $('.form-control').removeClass('alertBorder');
          // Process the form
          desiredOutcome = $('#desiredOutcome').val();
         }
