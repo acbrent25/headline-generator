@@ -9,10 +9,15 @@ $(document).ready(function(){
     // Set up variables
     var form = $('#headline-form');
     var desiredOutcome = '';
+
     var doHeadline = 'Desired Outcome: ';
     var bestHeadline = 'Best Headline: ';
+    var makeLifeEasier = 'Make Life Easier';
+    var ifWereYou;
+    var race = 'It\'s a race';
+    var counter = 0;
 
-    var headlineTypes = ['Desired Outcome', 'Best', 'Make Life Easier', 'It\'s a race', 'If I were you' ];
+    var headlineTypes = [doHeadline, bestHeadline, makeLifeEasier, race, ifWereYou ];
 
 
     
@@ -73,6 +78,26 @@ $(document).ready(function(){
     ];
 
 
+    var headlineTypeSelect = $('<select/>', {
+      'class' : 'form-control',
+      'id' : 'hs',
+   }).appendTo('#headline-form');
+
+   var defaultSelect = '<option>Please Choose a Headline Type</option>';
+
+   $(defaultSelect).appendTo('#hs');
+
+   var options = '';
+   headlineTypes.forEach(function(option) {
+      var options = '<option>' + option + '</option>';
+      $(options).appendTo('#hs');
+    });
+
+   
+
+
+
+    
 
     // Form Submit Function
     $('#headline-form').submit(function(e){
@@ -98,20 +123,23 @@ $(document).ready(function(){
 
         // Loop over the each headline and print to DOM
         for(var i = 0; i < headlines.length; i++) {
-
-           if(headlines[i].headlineType == doHeadline){
-              console.log('true');
-           } else {
-              console.log('false');
-           }
+            counter++;
+            if(headlines[i].headlineType == doHeadline){
+               console.log('true');
+            } else {
+               console.log('false');
+            }
             // Set up results well variable
             var resultWell = $('#resultWell');
             // Set up HTML and insert Object  
             var li = '<li>' + doHeadline + headlines[i].headline + ' ' + desiredOutcome + '</li>';
             // Append HTML to results well
-            resultWell.append(li);
+            
+            resultWell.append(div).addClass(doHeadline);
         }
     });
+
+
 
     // Function to clear out content
     $('#clearBtn').click(function(e) {
