@@ -10,10 +10,10 @@ $(document).ready(function(){
     var form = $('#headline-form');
     var desiredOutcome = '';
 
-    var doHeadline = 'Desired Outcome: ';
-    var bestHeadline = 'Best Headline: ';
+    var doHeadline = 'Desired Outcome';
+    var bestHeadline = 'Best Headline';
     var makeLifeEasier = 'Make Life Easier';
-    var ifWereYou;
+    var ifWereYou = 'If I Were You'
     var race = 'It\'s a race';
     var counter = 0;
 
@@ -78,7 +78,7 @@ $(document).ready(function(){
     ];
 
 
-    var headlineTypeSelect = $('<select/>', {
+   var headlineTypeSelect = $('<select/>', {
       'class' : 'form-control',
       'id' : 'hs',
    }).appendTo('#headline-form');
@@ -89,9 +89,9 @@ $(document).ready(function(){
 
    var options = '';
    headlineTypes.forEach(function(option) {
-      var options = '<option>' + option + '</option>';
+      var options = '<option value="'+ option +'">' + option + '</option>';
       $(options).appendTo('#hs');
-    });
+   });
 
    
 
