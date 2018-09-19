@@ -108,23 +108,67 @@ $(document).ready(function(){
       'id' : 'hs_select',
    }).appendTo(hl_formGroup);
 
-   // Setu default select
+   // Set default select
    var defaultSelect = $('<option>', {
-      'text': 'Pick a Headline Type'
+      'text': '-',
+      'value' : null
    }).appendTo('#hs_select');
 
-
+   // Loop over headlineTypes array and add options to select
    var options = '';
    headlineTypes.forEach(function(option) {
       var options = '<option value="'+ option +'">' + option + '</option>';
       $(options).appendTo('#hs_select');
    });
 
-   
+   var counter = 0;
+   // Headline Select Function
+   $('#hs_select').on('change', function(){
+      counter++
+
+      
+      // Get selected value
+      var optionVal = $(this).find(':selected').val();
+      console.log(optionVal);
+      
+      // Pass Option Val to createInput(); 
+      createInput(optionVal, counter);
+      
+
+   });
+
+   function createInput(optionVal, counter) {
+      console.log('disiredOutcome: ' + optionVal);
+      if (counter > 1) {
+         console.log(counter);
+         $('#ip_form').empty();
+      }
+      var ip_col = $('<div>', {
+         'class' : 'col',
+         'id' : 'ip_col'
+      }).appendTo('#headlines'); 
+
+      // Set up form with id and append to new div
+      var ip_form = $('<form/>', {
+         'id':'ip_form'
+      }).appendTo('#ip_col');
+
+      // Set up form group
+      var ip_formGroup = $('<div/>', {
+         'class' : 'form-group'
+      }).appendTo('#ip_form');
+
+      // set up input and append to form group
+      var ip_input = $('<input/>',{
+         'type' : 'text',
+         'class' : 'form-control',
+         'id': 'ip_input'
+      }).appendTo(ip_formGroup);
 
 
 
-    
+
+   }
 
     // Form Submit Function
     $('#headline-form').submit(function(e){
