@@ -77,20 +77,47 @@ $(document).ready(function(){
          },
     ];
 
+   //----------------------------------------------
+   //   SET UP HEADLINE TYPE SELECT
+   //----------------------------------------------
 
-   var headlineTypeSelect = $('<select/>', {
+   var hl_col = $('<div/>',{
+      'class' : 'col',
+      'id' : 'hl_col'
+   }).appendTo('#headlines');
+
+   // Set up form with id and append to new div
+   var hl_form = $('<form/>', {
+      'id':'mg_form'
+   }).appendTo('#hl_col');
+
+   // Set up form group
+   var hl_formGroup = $('<div/>', {
+      'class' : 'form-group'
+   }).appendTo('#mg_form');
+
+   // Set up form group label
+   var hl_label = $('<label/>', {
+      'for' : 'hl_select',
+      text : 'Choose Headline Type'
+   }).appendTo(hl_formGroup);
+
+   // Set up select
+   var hl_select = $('<select/>', {
       'class' : 'form-control',
-      'id' : 'hs',
-   }).appendTo('#headline-form');
+      'id' : 'hs_select',
+   }).appendTo(hl_formGroup);
 
-   var defaultSelect = '<option>Please Choose a Headline Type</option>';
+   // Setu default select
+   var defaultSelect = $('<option>', {
+      'text': 'Pick a Headline Type'
+   }).appendTo('#hs_select');
 
-   $(defaultSelect).appendTo('#hs');
 
    var options = '';
    headlineTypes.forEach(function(option) {
       var options = '<option value="'+ option +'">' + option + '</option>';
-      $(options).appendTo('#hs');
+      $(options).appendTo('#hs_select');
    });
 
    
