@@ -9,20 +9,70 @@ $(document).ready(function(){
     // Set up variables
     var form = $('#headline-form');
     var desiredOutcome = '';
+    var doHeadline = 'Desired Outcome: ';
+    var bestHeadline = 'Best Headline: ';
+
+    var headlineTypes = ['Desired Outcome', 'Best', 'Make Life Easier', 'It\'s a race', 'If I were you' ];
+
+
     
     // Setup Headlines Object
     var headlines = [
-        { headline: 'How to ' + desiredOutcome },
-        { headline: '16 Ways to ' + desiredOutcome },
-        { headline: 'The Ultimate Guide to ' + desiredOutcome },
-        { headline: '12 proven ways to ' + desiredOutcome },
-        { headline: 'Secrets to ' + desiredOutcome },
-        { headline: 'The Tool Over 283,000 Websites Use to to ' + desiredOutcome },
-        { headline: 'No, You Don’t Have to Count Calories to ' + desiredOutcome },
-        { headline: '14 Easy Ways to ' + desiredOutcome },
-        { headline: '25 Hacks to ' + desiredOutcome },
-        { headline: '15 Little-Known Ways to  ' + desiredOutcome },
+        { 
+           headlineType: doHeadline,
+           headline: 'How to ' + desiredOutcome 
+         },
+        { 
+            headlineType: doHeadline,
+            headline: '16 Ways to ' + desiredOutcome 
+         },
+        { 
+            headlineType: doHeadline,
+            headline: 'The Ultimate Guide to ' + desiredOutcome 
+         },
+        { 
+            headlineType: doHeadline,  
+            headline: '12 proven ways to ' + desiredOutcome 
+         },
+        { 
+            headlineType: doHeadline,  
+            headline: 'Secrets to ' + desiredOutcome 
+         },
+        { 
+            headlineType: doHeadline,  
+            headline: 'The Tool Over 283,000 Websites Use to to ' + desiredOutcome 
+         },
+        { 
+            headlineType: doHeadline,  
+            headline: 'No, You Don’t Have to Count Calories to ' + desiredOutcome 
+         },
+        { 
+            headlineType: doHeadline,  
+            headline: '14 Easy Ways to ' + desiredOutcome 
+         },
+        { 
+            headlineType: doHeadline,  
+            headline: '25 Hacks to ' + desiredOutcome 
+         },
+        { 
+            headlineType: doHeadline,  
+            headline: '15 Little-Known Ways to  ' + desiredOutcome 
+         },
+         { 
+            headlineType: bestHeadline,  
+            headline: '15 Little-Known Ways to  ' + desiredOutcome 
+         },
+         { 
+            headlineType: bestHeadline,  
+            headline: '15 Little-Known Ways to  ' + desiredOutcome 
+         },
+         { 
+            headlineType: bestHeadline,  
+            headline: '15 Little-Known Ways to  ' + desiredOutcome 
+         },
     ];
+
+
 
     // Form Submit Function
     $('#headline-form').submit(function(e){
@@ -48,10 +98,16 @@ $(document).ready(function(){
 
         // Loop over the each headline and print to DOM
         for(var i = 0; i < headlines.length; i++) {
+
+           if(headlines[i].headlineType == doHeadline){
+              console.log('true');
+           } else {
+              console.log('false');
+           }
             // Set up results well variable
             var resultWell = $('#resultWell');
             // Set up HTML and insert Object  
-            var li = '<li>' + headlines[i].headline + ' ' + desiredOutcome + '</li>';
+            var li = '<li>' + doHeadline + headlines[i].headline + ' ' + desiredOutcome + '</li>';
             // Append HTML to results well
             resultWell.append(li);
         }
