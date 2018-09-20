@@ -156,6 +156,7 @@ $(document).ready(function(){
          'type' : 'text',
          'class' : 'form-control',
          'id': 'ip_input',
+         'data-headline-type' : optionVal,
          'placeholder' : 'Enter Desired Outcome'
       }).appendTo(ip_formGroup);
 
@@ -178,7 +179,7 @@ $(document).ready(function(){
 
       var clear_btn = $('<button/>', {
          'type' : 'submit',
-         'id' : 'clear_btn',
+         'id' : 'clearBtn',
          'class' : 'btn btn-danger ml-2',
          'text': 'Clear'
       }).appendTo('#btn_col');
@@ -187,17 +188,17 @@ $(document).ready(function(){
 
 
     // Form Submit Function
-    $('#headline-form').submit(function(e){
+    $('#sub_btn').submit(function(e){
         e.preventDefault();
 
         // Show Results Well and Clear Button
-        $('#resultWell').show();
-        $('#clearBtn').show();
+      //   $('#resultWell').show();
+      //   $('#clearBtn').show();
 
         // If Form is empty
-        if (desiredOutcome = $('#desiredOutcome').val() == '') {
+        if ($('#ip_input').val() === '') {
          // Add Red Border
-         $('.form-control').addClass('alertBorder');
+         $('#ip_formGroup').addClass('alertBorder');
             alert('You must enter a word');
             // Keep results hidden
             $('#resultWell').hide();
@@ -205,7 +206,7 @@ $(document).ready(function(){
         } else {
          $('.form-control').removeClass('alertBorder');
          // Process the form
-         desiredOutcome = $('#desiredOutcome').val();
+         // desiredOutcome = $('#desiredOutcome').val();
         }
 
         // Loop over the each headline and print to DOM
