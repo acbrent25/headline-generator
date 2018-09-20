@@ -88,13 +88,13 @@ $(document).ready(function(){
 
    // Set up form with id and append to new div
    var hl_form = $('<form/>', {
-      'id':'mg_form'
+      'id':'hl_form'
    }).appendTo('#hl_col');
 
    // Set up form group
    var hl_formGroup = $('<div/>', {
       'class' : 'form-group'
-   }).appendTo('#mg_form');
+   }).appendTo('#hl_form');
 
    // Set up form group label
    var hl_label = $('<label/>', {
@@ -125,50 +125,66 @@ $(document).ready(function(){
    // Headline Select Function
    $('#hs_select').on('change', function(){
       counter++
-
-      
       // Get selected value
       var optionVal = $(this).find(':selected').val();
       console.log(optionVal);
       
       // Pass Option Val to createInput(); 
       createInput(optionVal, counter);
-      
-
    });
 
    function createInput(optionVal, counter) {
       console.log('disiredOutcome: ' + optionVal);
+
       if (counter > 1) {
          console.log(counter);
-         $('#ip_form').empty();
+         $('#input_wrap').empty();
       }
-      var ip_col = $('<div>', {
-         'class' : 'col',
-         'id' : 'ip_col'
-      }).appendTo('#headlines'); 
-
-      // Set up form with id and append to new div
-      var ip_form = $('<form/>', {
-         'id':'ip_form'
-      }).appendTo('#ip_col');
+      // Set up form input wrapper to allow for clearing out on submit
+      var input_wrap = $('<div/>', {
+         'id' : 'input_wrap'
+      }).appendTo('#hl_form');
 
       // Set up form group
       var ip_formGroup = $('<div/>', {
-         'class' : 'form-group'
-      }).appendTo('#ip_form');
+         'class' : 'form-group',
+         'id' : 'ip_formGroup'
+      }).appendTo('#input_wrap');
 
       // set up input and append to form group
       var ip_input = $('<input/>',{
          'type' : 'text',
          'class' : 'form-control',
-         'id': 'ip_input'
+         'id': 'ip_input',
+         'placeholder' : 'Enter Desired Outcome'
       }).appendTo(ip_formGroup);
 
-
-
-
+      createButtons();
    }
+
+
+   // Set up Submit and Clear Buttons
+   function createButtons(){
+      var btn_col = $('<div/>',{
+         'id': 'btn_col'
+      }).appendTo('#input_wrap');
+
+      var sub_btn = $('<button/>', {
+         'type' : 'submit',
+         'id' : 'sub_btn',
+         'class' : 'btn btn-primary',
+         'text': 'Submit'
+      }).appendTo('#btn_col');
+
+      var clear_btn = $('<button/>', {
+         'type' : 'submit',
+         'id' : 'clear_btn',
+         'class' : 'btn btn-danger ml-2',
+         'text': 'Clear'
+      }).appendTo('#btn_col');
+   }
+
+
 
     // Form Submit Function
     $('#headline-form').submit(function(e){
